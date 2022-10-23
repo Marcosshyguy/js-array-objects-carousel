@@ -68,13 +68,14 @@ img{
 .miniature{
     width: calc(100% / 5);
     height: 100%;
-    object-fit: contain;
+    
     opacity: 50%;
 }
 
 .miniature img{
     height: 100%;
     width: 100%;
+    object-fit: fill;
 }
 
 
@@ -119,7 +120,7 @@ footer{
 /* event */
 .miniature-selected{
     opacity: 1;
-    border: 2px solid grey;
+    outline: 3px solid grey;
 }
 
 .d-none{

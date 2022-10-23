@@ -78,7 +78,68 @@ collectionThumbsMiniature[indexCollector].classList.add("miniature-selected");
 // })
 
 // btnRightListener
-btnRight.addEventListener("click", function(){
+btnRight.addEventListener("click", slideRigth);
+
+
+// btnLeftListener
+btnLeft.addEventListener("click", slideLeft);
+    
+
+// setInterval(() => {
+//     if(indexCollector < collectionMainThumb.length - 1){
+//         collectionMainThumb[indexCollector].classList.add("d-none");
+//         collectionThumbsMiniature[indexCollector].classList.remove("miniature-selected");
+
+//         indexCollector++;
+//         collectionMainThumb[indexCollector].classList.remove("d-none");
+//         collectionThumbsMiniature[indexCollector].classList.add("miniature-selected");
+//     }else if(indexCollector === collectionMainThumb.length - 1){
+//         collectionMainThumb[indexCollector].classList.add("d-none");
+//         collectionThumbsMiniature[indexCollector].classList.remove("miniature-selected");
+//         indexCollector = 0;
+//         collectionMainThumb[indexCollector].classList.remove("d-none");
+//         collectionThumbsMiniature[indexCollector].classList.add("miniature-selected");
+//     }
+// }, 1000);
+
+// let flag = true;
+// btnStop.addEventListener("click", function(){
+//     if(flag){
+//         flag = false
+//         clearInterval(graffio);
+        
+//     }
+//     else{
+        
+//         setInterval(() => {
+//             if(indexCollector < collectionMainThumb.length - 1){
+//                 collectionMainThumb[indexCollector].classList.add("d-none");
+//                 collectionThumbsMiniature[indexCollector].classList.remove("miniature-selected");
+        
+//                 indexCollector++;
+//                 collectionMainThumb[indexCollector].classList.remove("d-none");
+//                 collectionThumbsMiniature[indexCollector].classList.add("miniature-selected");
+//             }else if(indexCollector === collectionMainThumb.length - 1){
+//                 collectionMainThumb[indexCollector].classList.add("d-none");
+//                 collectionThumbsMiniature[indexCollector].classList.remove("miniature-selected");
+//                 indexCollector = 0;
+//                 collectionMainThumb[indexCollector].classList.remove("d-none");
+//                 collectionThumbsMiniature[indexCollector].classList.add("miniature-selected");
+//             }
+//         }, 1000);
+//         flag = true
+//     }
+    
+// })
+
+// btnRevert.addEventListener("click",)
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+FUNCTION
+function slideRigth() {
     if(indexCollector < collectionMainThumb.length - 1){
         collectionMainThumb[indexCollector].classList.add("d-none");
         collectionThumbsMiniature[indexCollector].classList.remove("miniature-selected");
@@ -93,12 +154,9 @@ btnRight.addEventListener("click", function(){
         collectionMainThumb[indexCollector].classList.remove("d-none");
         collectionThumbsMiniature[indexCollector].classList.add("miniature-selected");
     }
-});
+}
 
-
-// btnLeftListener
-btnLeft.addEventListener("click", function(){
-    
+function slideLeft() {
     if(indexCollector > 0){
         collectionMainThumb[indexCollector].classList.add("d-none");
         collectionThumbsMiniature[indexCollector].classList.remove("miniature-selected");
@@ -114,26 +172,4 @@ btnLeft.addEventListener("click", function(){
             collectionMainThumb[indexCollector].classList.remove("d-none");
             collectionThumbsMiniature[indexCollector].classList.add("miniature-selected");
         }
-})
-
-
-
-
-//////////////////////////////////////////////////////////////////////////////
-// FUNCTION
-// function slideRigth (collectorIndex,mainPictures,miniatures){
-//     if(collectorIndex < mainPictures.length - 1){
-//         mainPictures[collectorIndex].classList.add("d-none");
-//         miniatures[collectorIndex].classList.remove("miniature-selected");
-
-//         collectorIndex++;
-//         mainPictures[collectorIndex].classList.remove("d-none");
-//         miniatures[collectorIndex].classList.add("miniature-selected");
-//     }else if(collectorIndex === mainPictures.length - 1){
-//         mainPictures[collectorIndex].classList.add("d-none");
-//         miniatures[collectorIndex].classList.remove("miniature-selected");
-//         collectorIndex = 0;
-//         mainPictures[collectorIndex].classList.remove("d-none");
-//         miniatures[collectorIndex].classList.add("miniature-selected");
-//     }
-// }
+}
