@@ -27,11 +27,113 @@ const sliderContainer = document.querySelector(".main-picture");
 
 const horizontalSliderContainer = document.querySelector(".miniatures-container");
 
-let thisObject
+// btn
+const btnRight = document.getElementById("btn-right");
+const btnLeft = document.getElementById("btn-left");
+const btnRevert = document.getElementById("revert");
+const btnStop = document.getElementById("stop");
+console.log(btnRight,btnLeft, btnRevert,btnStop)
+// let thisObject
 // for( let imagesIndex = 0; imagesIndex < images.length; imagesIndex++){
 //     thisObject = images[imagesIndex]
 //     console.log(thisObject);
-// }
+// }  
 
-images.forEach{(items)=>} 
-console.log(images)
+// forEach
+images.forEach((items) => {
+    // creazione degli elemeti da disporre nel dom tramite estrapolazione chiavi oggetti con foreach
+    let mainThumb = document.createElement("div");
+    
+    mainThumb.innerHTML = `
+    <div class="title-pic">
+    <h2>${items.title}</h2>
+    <p>${items.text}</p>
+    </div>
+    <img src="${items.image}" alt="${items.title}">`;
+
+    mainThumb.classList.add("picture");
+    mainThumb.classList.add("d-none");
+    sliderContainer.append(mainThumb)
+
+    // creazione elmenti slider orizzontale
+    let thumbsMiniature = document.createElement("div");
+    thumbsMiniature.innerHTML = `<img src="${items.image}">`
+    thumbsMiniature.classList.add("miniature");
+    horizontalSliderContainer.append(thumbsMiniature); 
+})
+
+// ottengo elemnti html creati tramit get by class name
+let collectionMainThumb = document.getElementsByClassName("picture");
+let collectionThumbsMiniature = document.getElementsByClassName("miniature");
+
+// imposto all'indice dei collector creati con getByClassName la posizione 0 e rimuovo il d-none
+let indexCollector = 0
+collectionMainThumb[indexCollector].classList.remove("d-none");
+collectionThumbsMiniature[indexCollector].classList.add("miniature-selected");
+
+
+// collectionThumbsMiniature Listenr
+// collectionThumbsMiniature[indexCollector].addEventListener("click",function(){
+    
+// })
+
+// btnRightListener
+btnRight.addEventListener("click", function(){
+    if(indexCollector < collectionMainThumb.length - 1){
+        collectionMainThumb[indexCollector].classList.add("d-none");
+        collectionThumbsMiniature[indexCollector].classList.remove("miniature-selected");
+
+        indexCollector++;
+        collectionMainThumb[indexCollector].classList.remove("d-none");
+        collectionThumbsMiniature[indexCollector].classList.add("miniature-selected");
+    }else if(indexCollector === collectionMainThumb.length - 1){
+        collectionMainThumb[indexCollector].classList.add("d-none");
+        collectionThumbsMiniature[indexCollector].classList.remove("miniature-selected");
+        indexCollector = 0;
+        collectionMainThumb[indexCollector].classList.remove("d-none");
+        collectionThumbsMiniature[indexCollector].classList.add("miniature-selected");
+    }
+});
+
+
+// btnLeftListener
+btnLeft.addEventListener("click", function(){
+    
+    if(indexCollector > 0){
+        collectionMainThumb[indexCollector].classList.add("d-none");
+        collectionThumbsMiniature[indexCollector].classList.remove("miniature-selected");
+
+        indexCollector--;
+
+        collectionMainThumb[indexCollector].classList.remove("d-none");
+        collectionThumbsMiniature[indexCollector].classList.add("miniature-selected");
+    }else{
+            collectionMainThumb[indexCollector].classList.add("d-none");
+            collectionThumbsMiniature[indexCollector].classList.remove("miniature-selected");
+            indexCollector = collectionMainThumb.length - 1;
+            collectionMainThumb[indexCollector].classList.remove("d-none");
+            collectionThumbsMiniature[indexCollector].classList.add("miniature-selected");
+        }
+})
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+// FUNCTION
+// function slideRigth (collectorIndex,mainPictures,miniatures){
+//     if(collectorIndex < mainPictures.length - 1){
+//         mainPictures[collectorIndex].classList.add("d-none");
+//         miniatures[collectorIndex].classList.remove("miniature-selected");
+
+//         collectorIndex++;
+//         mainPictures[collectorIndex].classList.remove("d-none");
+//         miniatures[collectorIndex].classList.add("miniature-selected");
+//     }else if(collectorIndex === mainPictures.length - 1){
+//         mainPictures[collectorIndex].classList.add("d-none");
+//         miniatures[collectorIndex].classList.remove("miniature-selected");
+//         collectorIndex = 0;
+//         mainPictures[collectorIndex].classList.remove("d-none");
+//         miniatures[collectorIndex].classList.add("miniature-selected");
+//     }
+// }
