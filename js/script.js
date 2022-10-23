@@ -74,8 +74,10 @@ collectionThumbsMiniature[indexCollector].classList.add("miniature-selected");
 
 // collectionThumbsMiniature Listenr
 // collectionThumbsMiniature[indexCollector].addEventListener("click",function(){
-    
 // })
+
+// setto intervallo di scorrimento miniature
+
 
 // btnRightListener
 btnRight.addEventListener("click", slideRigth);
@@ -85,49 +87,32 @@ btnRight.addEventListener("click", slideRigth);
 btnLeft.addEventListener("click", slideLeft);
     
 
-// setInterval(() => {
-//     if(indexCollector < collectionMainThumb.length - 1){
-//         collectionMainThumb[indexCollector].classList.add("d-none");
-//         collectionThumbsMiniature[indexCollector].classList.remove("miniature-selected");
 
-//         indexCollector++;
-//         collectionMainThumb[indexCollector].classList.remove("d-none");
-//         collectionThumbsMiniature[indexCollector].classList.add("miniature-selected");
-//     }else if(indexCollector === collectionMainThumb.length - 1){
-//         collectionMainThumb[indexCollector].classList.add("d-none");
-//         collectionThumbsMiniature[indexCollector].classList.remove("miniature-selected");
-//         indexCollector = 0;
-//         collectionMainThumb[indexCollector].classList.remove("d-none");
-//         collectionThumbsMiniature[indexCollector].classList.add("miniature-selected");
-//     }
-// }, 1000);
+let flag = false;
+let rightSlideInterval = setInterval(slideRigth, 3000);
 
-// let flag = true;
+btnRevert.addEventListener("click", function(){
+    if(flag !== true){
+        clearInterval(rightSlideInterval);
+        rightSlideInterval =setInterval(slideLeft, 3000)
+        flag = true
+    }else{
+        flag = false;
+        clearInterval(rightSlideInterval);
+        rightSlideInterval =setInterval(slideRigth, 3000)
+    }
+})
+
+// let flag = false;
 // btnStop.addEventListener("click", function(){
 //     if(flag){
-//         flag = false
-//         clearInterval(graffio);
+//         flag = true
+//         rightSlideInterval = slideRigth();
         
 //     }
 //     else{
-        
-//         setInterval(() => {
-//             if(indexCollector < collectionMainThumb.length - 1){
-//                 collectionMainThumb[indexCollector].classList.add("d-none");
-//                 collectionThumbsMiniature[indexCollector].classList.remove("miniature-selected");
-        
-//                 indexCollector++;
-//                 collectionMainThumb[indexCollector].classList.remove("d-none");
-//                 collectionThumbsMiniature[indexCollector].classList.add("miniature-selected");
-//             }else if(indexCollector === collectionMainThumb.length - 1){
-//                 collectionMainThumb[indexCollector].classList.add("d-none");
-//                 collectionThumbsMiniature[indexCollector].classList.remove("miniature-selected");
-//                 indexCollector = 0;
-//                 collectionMainThumb[indexCollector].classList.remove("d-none");
-//                 collectionThumbsMiniature[indexCollector].classList.add("miniature-selected");
-//             }
-//         }, 1000);
-//         flag = true
+//         clearInterval(rightSlideInterval)
+//         flag = false
 //     }
     
 // })
@@ -138,7 +123,8 @@ btnLeft.addEventListener("click", slideLeft);
 
 
 //////////////////////////////////////////////////////////////////////////////
-FUNCTION
+// FUNCTION
+// funzione per muoversi a destra
 function slideRigth() {
     if(indexCollector < collectionMainThumb.length - 1){
         collectionMainThumb[indexCollector].classList.add("d-none");
@@ -155,6 +141,7 @@ function slideRigth() {
         collectionThumbsMiniature[indexCollector].classList.add("miniature-selected");
     }
 }
+// funzione per muoversi a sinistra
 
 function slideLeft() {
     if(indexCollector > 0){
