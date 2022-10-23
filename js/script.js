@@ -87,37 +87,42 @@ btnRight.addEventListener("click", slideRigth);
 btnLeft.addEventListener("click", slideLeft);
     
 
-
-let flag = false;
-let rightSlideInterval = setInterval(slideRigth, 3000);
+// btnRevert Listener che permette di invertire la direzione dello slider
+let flagReverted = false;
+let slideInterval = setInterval(slideRigth, 1000);
 
 btnRevert.addEventListener("click", function(){
-    if(flag !== true){
-        clearInterval(rightSlideInterval);
-        rightSlideInterval =setInterval(slideLeft, 3000)
-        flag = true
+    if(flagReverted !== true){
+        clearInterval(slideInterval);
+        slideInterval =setInterval(slideLeft, 1000)
+        flagReverted = true
     }else{
-        flag = false;
-        clearInterval(rightSlideInterval);
-        rightSlideInterval =setInterval(slideRigth, 3000)
+        flagReverted = false;
+        clearInterval(slideInterval);
+        slideInterval =setInterval(slideRigth, 1000)
     }
 })
 
-// let flag = false;
-// btnStop.addEventListener("click", function(){
-//     if(flag){
-//         flag = true
-//         rightSlideInterval = slideRigth();
-        
-//     }
-//     else{
-//         clearInterval(rightSlideInterval)
-//         flag = false
-//     }
-    
-// })
 
-// btnRevert.addEventListener("click",)
+let flagStop = false;
+btnStop.addEventListener("click", function(){
+    if(flagReverted !== true){
+        clearInterval(slideInterval);
+        flagStop = true
+    }
+    else{
+        if(flagReverted !== true){
+            clearInterval(slideInterval);
+            slideInterval =setInterval(slideLeft, 1000)
+            flagReverted = true
+        }else{
+            flagReverted = false;
+            clearInterval(slideInterval);
+            slideInterval =setInterval(slideRigth, 1000)
+        }
+        flagStop = false;
+    }
+})
 
 
 

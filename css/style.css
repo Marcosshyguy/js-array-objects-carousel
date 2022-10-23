@@ -94,6 +94,15 @@ footer{
     cursor: pointer;
 }
 
+.btn:hover{
+    opacity: 80%;
+}
+
+.btn:active{
+    background-color: white;
+    color: #8d7aeb;
+}
+
 .btn-slider{
     padding: .9em;
     border-radius: 50%;
@@ -102,6 +111,14 @@ footer{
     z-index: 999;
     cursor: pointer;
     
+}
+
+.btn-slider:hover{
+    background-color: rgba(128, 128, 128, 90%);
+}
+
+.btn-slider:active{
+    background-color: rgba(128, 128, 128, 50%);
 }
 
 .btn-right{
@@ -120,7 +137,7 @@ footer{
 /* event */
 .miniature-selected{
     opacity: 1;
-    outline: 3px solid grey;
+    border: 3px solid grey;
 }
 
 .d-none{
@@ -128,9 +145,6 @@ footer{
 }
 
 
-.z-index{
-    z-index: 999;
-}
 
 
 
