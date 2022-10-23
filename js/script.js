@@ -53,30 +53,44 @@ images.forEach((items) => {
 
     mainThumb.classList.add("picture");
     mainThumb.classList.add("d-none");
-    sliderContainer.append(mainThumb)
+    sliderContainer.append(mainThumb);
 
     // creazione elmenti slider orizzontale
     let thumbsMiniature = document.createElement("div");
     thumbsMiniature.innerHTML = `<img src="${items.image}">`
     thumbsMiniature.classList.add("miniature");
-    horizontalSliderContainer.append(thumbsMiniature); 
+    horizontalSliderContainer.append(thumbsMiniature);
+     
 })
 
 // ottengo elemnti html creati tramit get by class name
 let collectionMainThumb = document.getElementsByClassName("picture");
 let collectionThumbsMiniature = document.getElementsByClassName("miniature");
 
+
 // imposto all'indice dei collector creati con getByClassName la posizione 0 e rimuovo il d-none
 let indexCollector = 0
+
 collectionMainThumb[indexCollector].classList.remove("d-none");
 collectionThumbsMiniature[indexCollector].classList.add("miniature-selected");
 
 
-// collectionThumbsMiniature Listenr
-// collectionThumbsMiniature[indexCollector].addEventListener("click",function(){
-// })
+// for(let i = 0; i < collectionThumbsMiniature.lenght; i++){
+//     const miniature = collectionThumbsMiniature[i];
+//     console.log(miniature)
+//     miniature.addEventListener("click", function(){
+//         collectionMainThumb[indexCollector].classList.add("d-none");
+//         collectionThumbsMiniature[indexCollector].classList.remove("miniature-selected");
 
-// setto intervallo di scorrimento miniature
+//         indexCollector = i
+
+//         collectionMainThumb[indexCollector].classList.remove("d-none");
+//         collectionThumbsMiniature[indexCollector].classList.add("miniature-selected");
+
+//     })
+// }
+
+
 
 
 // btnRightListener
@@ -89,17 +103,18 @@ btnLeft.addEventListener("click", slideLeft);
 
 // btnRevert Listener che permette di invertire la direzione dello slider
 let flagReverted = false;
-let slideInterval = setInterval(slideRigth, 1000);
+let slideInterval = setInterval(slideRigth, 2000);
 
+// setto intervallo di scorrimento miniature
 btnRevert.addEventListener("click", function(){
     if(flagReverted !== true){
         clearInterval(slideInterval);
-        slideInterval =setInterval(slideLeft, 1000)
+        slideInterval =setInterval(slideLeft, 2000)
         flagReverted = true
     }else{
         flagReverted = false;
         clearInterval(slideInterval);
-        slideInterval =setInterval(slideRigth, 1000)
+        slideInterval =setInterval(slideRigth, 2000)
     }
 })
 
@@ -113,12 +128,12 @@ btnStop.addEventListener("click", function(){
     else{
         if(flagReverted !== true){
             clearInterval(slideInterval);
-            slideInterval =setInterval(slideLeft, 1000)
+            slideInterval =setInterval(slideLeft, 2000)
             flagReverted = true
         }else{
             flagReverted = false;
             clearInterval(slideInterval);
-            slideInterval =setInterval(slideRigth, 1000)
+            slideInterval =setInterval(slideRigth, 2000)
         }
         flagStop = false;
     }
