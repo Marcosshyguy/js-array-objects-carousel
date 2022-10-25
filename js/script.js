@@ -32,7 +32,8 @@ const btnRight = document.getElementById("btn-right");
 const btnLeft = document.getElementById("btn-left");
 const btnRevert = document.getElementById("revert");
 const btnStop = document.getElementById("stop");
-console.log(btnRight,btnLeft, btnRevert,btnStop)
+
+// variante con for commentata
 // let thisObject
 // for( let imagesIndex = 0; imagesIndex < images.length; imagesIndex++){
 //     thisObject = images[imagesIndex]
@@ -101,9 +102,12 @@ btnRight.addEventListener("click", slideRigth);
 btnLeft.addEventListener("click", slideLeft);
     
 
+
 // btnRevert Listener che permette di invertire la direzione dello slider
 let flagReverted = false;
 let slideInterval = setInterval(slideRigth, 2000);
+// imposto variabile che mi permetta di gestire la direzione quando devo ripartire dopo sùtasto stop
+let currentDirection = "right";
 
 // setto intervallo di scorrimento miniature
 btnRevert.addEventListener("click", function(){
@@ -111,33 +115,40 @@ btnRevert.addEventListener("click", function(){
         clearInterval(slideInterval);
         slideInterval =setInterval(slideLeft, 2000)
         flagReverted = true
+        currentDirection = "left"
     }else{
         flagReverted = false;
         clearInterval(slideInterval);
         slideInterval =setInterval(slideRigth, 2000)
+        currentDirection = "right"
     }
+    console.log(currentDirection)
 })
 
 
+// btnStop che permette di stoppare e riprendere la direzione corrente
 let flagStop = false;
 btnStop.addEventListener("click", function(){
-    if(flagReverted !== true){
+    if(flagStop !== true){
         clearInterval(slideInterval);
         flagStop = true
     }
     else{
-        if(flagReverted !== true){
-            clearInterval(slideInterval);
-            slideInterval =setInterval(slideLeft, 2000)
-            flagReverted = true
-        }else{
-            flagReverted = false;
+
+        if(currentDirection === "right"){
             clearInterval(slideInterval);
             slideInterval =setInterval(slideRigth, 2000)
+        }
+        
+        if(currentDirection === "left"){
+            clearInterval(slideInterval);
+            slideInterval =setInterval(slideLeft, 2000)
         }
         flagStop = false;
     }
 })
+  
+
 
 
 
